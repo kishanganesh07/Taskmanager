@@ -26,7 +26,7 @@ const QuickAdd = forwardRef(function QuickAdd(_, ref) {
 
   return (
     <form onSubmit={handleSubmit} className="sticky top-[4.5rem] z-20">
-      <div className="flex items-center gap-2 rounded-2xl border border-neutral-200 bg-white/90 p-2 shadow-soft backdrop-blur-md transition focus-within:border-primary/40 focus-within:shadow-ring dark:border-neutral-800 dark:bg-neutral-900/90">
+      <div className="flex items-center gap-2 rounded-2xl bg-white/90 p-2 shadow-soft backdrop-blur-md transition dark:bg-neutral-900/90">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
           <FiPlus size={18} />
         </div>
