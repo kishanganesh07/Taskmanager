@@ -8,10 +8,11 @@ export function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     try {
       const stored = window.localStorage.getItem(key);
-      return stored !== null ? JSON.parse(stored) : initialValue;
+      const resolvedInitialValue = typeof initialValue === 'function' ? initialValue() : initialValue;
+      return stored !== null ? JSON.parse(stored) : resolvedInitialValue;
     } catch (error) {
       console.warn(`Could not read localStorage key "${key}":`, error);
-      return initialValue;
+      return typeof initialValue === 'function' ? initialValue() : initialValue;
     }
   });
 
