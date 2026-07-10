@@ -44,7 +44,7 @@ const QuickAdd = forwardRef(function QuickAdd(_, ref) {
             value={goalId}
             onChange={(e) => setGoalId(e.target.value)}
             aria-label="Assign to goal"
-            className="hidden shrink-0 rounded-lg border border-transparent bg-neutral-100 px-2 py-1.5 text-xs text-neutral-500 outline-none sm:block dark:bg-neutral-800 dark:text-neutral-400"
+            className="shrink-0 rounded-lg border border-transparent bg-neutral-100 px-2 py-1.5 text-xs text-neutral-700 outline-none dark:bg-neutral-800 dark:text-neutral-200"
           >
             <option value="">No goal</option>
             {goals.map((g) => (

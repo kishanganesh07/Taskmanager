@@ -15,7 +15,7 @@ export default function App() {
       const tag = document.activeElement?.tagName;
       const isTyping = tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable;
 
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      if ((e.key.toLowerCase() === 'k' && !isTyping) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
         e.preventDefault();
         quickAddRef.current?.focus();
         return;

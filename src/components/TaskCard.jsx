@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { FiCheck, FiEdit2, FiTrash2, FiCalendar, FiPlus, FiX } from 'react-icons/fi';
 import { formatDueDate, formatDueTime, isOverdue } from '../utils/dateUtils.js';
 import { PRIORITIES, PRIORITY_STYLES, tagColor } from '../constants/index.js';
+import { useTasks } from '../context/TaskContext.jsx';
 
 export default function TaskCard({ task, goal, onToggle, onDelete, onUpdate }) {
+  const { goals } = useTasks();
   const [editingTitle, setEditingTitle] = useState(false);
   const [titleDraft, setTitleDraft] = useState(task.title);
   const [expanded, setExpanded] = useState(false);
@@ -154,6 +156,19 @@ export default function TaskCard({ task, goal, onToggle, onDelete, onUpdate }) {
                 aria-label="Due date"
                 className="rounded-lg border border-neutral-200 bg-transparent px-2 py-1 text-xs text-neutral-600 outline-none dark:border-neutral-700 dark:text-neutral-300"
               />
+              <select
+                value={task.goalId || ''}
+                onChange={(e) => onUpdate({ goalId: e.target.value || null })}
+                aria-label="Assign to goal"
+                className="rounded-lg border border-neutral-200 bg-transparent px-2 py-1 text-xs text-neutral-600 outline-none dark:border-neutral-700 dark:text-neutral-300"
+              >
+                <option value="" className="text-neutral-900 dark:text-neutral-900">No goal</option>
+                {goals.map((g) => (
+                  <option key={g.id} value={g.id} className="text-neutral-900 dark:text-neutral-900">
+                    {g.title}
+                  </option>
+                ))}
+              </select>
               <form onSubmit={addTag} className="flex items-center gap-1">
                 <input
                   value={tagDraft}

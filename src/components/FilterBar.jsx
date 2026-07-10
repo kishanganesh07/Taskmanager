@@ -16,7 +16,7 @@ export default function FilterBar({ active, onChange }) {
             className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-200 ${
               isActive
                 ? 'bg-primary text-white shadow-soft'
-                : 'bg-white text-neutral-500 hover:bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800'
+                : 'bg-transparent text-neutral-500 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800'
             }`}
           >
             {filter.label}
