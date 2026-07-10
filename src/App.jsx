@@ -3,6 +3,8 @@ import Navbar from './components/Navbar.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Confetti from './components/Confetti.jsx';
 import { useTasks } from './context/TaskContext.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   const { celebrate } = useTasks();
@@ -41,6 +43,7 @@ export default function App() {
       <Navbar />
       <Dashboard quickAddRef={quickAddRef} searchRef={searchRef} />
       <Confetti active={celebrate} />
+      <ToastContainer position="bottom-right" theme="colored" autoClose={3000} />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage.js';
 import { STORAGE_KEYS } from '../constants/index.js';
 import { seedGoals, seedTasks } from '../utils/storage.js';
 import { isDueToday, isOverdue } from '../utils/dateUtils.js';
+import { toast } from 'react-toastify';
 
 const TaskContext = createContext(null);
 
@@ -37,6 +38,7 @@ export function TaskProvider({ children }) {
       updatedAt: now,
     };
     setTasks((prev) => [task, ...prev]);
+    toast.success('Task created successfully!');
   }
 
   function updateTask(id, patch) {
@@ -50,6 +52,7 @@ export function TaskProvider({ children }) {
     if (task && !task.completed) {
       setCelebrate(true);
       setTimeout(() => setCelebrate(false), 2600);
+      toast.success('Task completed!');
     }
     setTasks((prev) =>
       prev.map((t) => (t.id === id ? { ...t, completed: !t.completed, updatedAt: new Date().toISOString() } : t))
@@ -63,6 +66,7 @@ export function TaskProvider({ children }) {
   function addGoal({ title, period }) {
     if (!title.trim()) return;
     setGoals((prev) => [...prev, { id: uuid(), title: title.trim(), period }]);
+    toast.success('Goal created successfully!');
   }
 
   function deleteGoal(id) {
